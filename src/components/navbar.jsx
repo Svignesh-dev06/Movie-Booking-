@@ -9,12 +9,14 @@ function Navbar({ cartCount = 0 }) {
             <span>Ticket New</span>
             </div>
            <div className="nav-2">
-            <Link to="/" className='login-link'> <button className="login"> <i className="fa-solid fa-user"></i>Log Out</button></Link>
-            <Link to="/addtocard">    <div className="cart-wrapper">
+               <Link to="/home" className='home-btn'>Home</Link>
+               <Link to="/addtocard">    <div className="cart-wrapper">
                 <i className="fa-solid fa-cart-shopping shop"></i>
                 {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
             </div></Link>
-            <Link to="/home" className='home-btn'>Home</Link>
+            <Link to="/" className='login-link'> <button className="login"> <i className="fa-solid fa-user"></i>Log Out</button></Link>
+            
+         
            </div>
         </div>
     );
