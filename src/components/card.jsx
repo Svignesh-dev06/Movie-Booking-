@@ -11,7 +11,7 @@ function Card() {
 
     axios.get("https://backend-crud-one.vercel.app/product")
     .then((response) =>{
-      setmoives(response.data)
+      setmoives(response.data);
     })
 
   },[])

@@ -16,7 +16,7 @@ function Navbar({ cartCount = 0 }) {
             </div></Link>
             <Link to="/" className='login-link'> <button className="login"> <i className="fa-solid fa-user"></i>Log Out</button></Link>
             
-         
+
            </div>
         </div>
     );
