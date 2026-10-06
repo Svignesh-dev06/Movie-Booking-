@@ -1,5 +1,5 @@
 import Navbar from "../components/navbar";
-import demo from "../assets/poster.jpeg"
+
 import { useState } from "react";
 
 function Addtocard() {
@@ -11,20 +11,19 @@ function Addtocard() {
        <Navbar />
        <div className="addtocard-allcontainer">
         <div className="addtocard-container">
-            <img src={demo} alt="" />
+            <img src="" alt="" />
              <div className="about-moive">
                 <h3>{title}</h3>
                 <p> 299</p>
-            
              </div>
              <div className="count-container">
-                <button>+</button>
+                <button onClick={() => setcount(count + 1)}>+</button>
                 <span>{count}</span>
-                <button>-</button>
+                <button onClick={() => setcount(count - 1)}>-</button>
              </div>
 
              <hr />
-             <h1>Total Amout : {}</h1>
+             <h1>Total Amount : {count * 299}</h1>
         </div>
        </div>
 

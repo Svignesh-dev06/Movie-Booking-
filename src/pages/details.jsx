@@ -29,7 +29,10 @@ function Details(){
           <span>₹{moive.ticketprice}</span>
           <span>{moive.budget}</span>
           <span>{moive.description}</span>
-          <button className="book-now-btn">Book Now</button>
+          <div className="details-btn-container">
+            <button className="book-now-btn">Book Now</button>
+            <Link to={`/details/${moive._id}`} className="details-btn">Details</Link>
+          </div>
        </div>
             </div>
 
