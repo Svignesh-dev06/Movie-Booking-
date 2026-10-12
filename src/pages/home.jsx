@@ -1,7 +1,6 @@
 import Card from "../components/card";
 
-import { useEffect, useState } from "react";
-import axios from "axios";
+import Hero from "../components/Hero";
 import Navbar from "../components/navbar";
 
 
@@ -10,8 +9,8 @@ function Home() {
   return (
     <>
        <Navbar />
+       <Hero />
        <Card />
-       
     </>
   );
 }

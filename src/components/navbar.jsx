@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { cartContext } from '../Context/Cardcontext';
+
 import navimg from "../assets/nav-image.jpeg"
 
-function Navbar({ cartCount = 0 }) {
+function Navbar() {
+
+    const { cart } = useContext(cartContext)
+ 
     return(
         <div className="navbar">
             <div className="nav-1">
@@ -10,10 +16,12 @@ function Navbar({ cartCount = 0 }) {
             </div>
            <div className="nav-2">
                <Link to="/home" className='home-btn'>Home</Link>
-               <Link to="/addtocard">    <div className="cart-wrapper">
-                <i className="fa-solid fa-cart-shopping shop"></i>
-                {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-            </div></Link>
+                       <Link to="/addtocard">
+                    <div className="cart-wrapper">
+                        <i className="fa-solid fa-cart-shopping shop"></i>
+                    {cart.length > 0 &&<span className="cart-count">{cart.length}</span>}
+                    </div>
+                </Link>
             <Link to="/" className='login-link'> <button className="login"> <i className="fa-solid fa-user"></i>Log Out</button></Link>
             
 

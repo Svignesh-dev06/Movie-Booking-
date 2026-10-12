@@ -2,6 +2,8 @@ import Navbar from "../components/navbar";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import { cartContext } from "../Context/Cardcontext";
 
 function Details(){
 
@@ -9,19 +11,37 @@ function Details(){
 
   const [moive, setmoive] = useState({});
 
+  const {addtoCart} = useContext(cartContext)
+  
+  const [loading , setLoading] = useState(true)
+
   useEffect(() =>{
 
     axios.get(`https://backend-crud-one.vercel.app/product/${_id}`)
     .then((response) =>{
     setmoive(response.data)
     })
+    .catch((error) =>{
+      console.log("Fetch Error Movie" , error)
+    })
+    .finally(()=>{
+      setLoading(false)
+    })
 
-  },[])
+  }, [_id])
+    if(loading){
+    return(
+      <div className="container-loading" role="status" aria-busy="true">
+        <span className="hero-loader" aria-hidden="true" />
+        <span>Loading movie details...</span>
+      </div>
+    )
+    }
+
     return(
      <>
-     
-       <Navbar />
-            <div className="detail-container">
+      <Navbar />
+      <div className="detail-container">
       <img src={moive.image} alt={moive.title} className="details-img"/>
      <div className="details-container">
           <h1>{moive.name}</h1>
@@ -31,13 +51,10 @@ function Details(){
           <span>{moive.description}</span>
           <div className="details-btn-container">
             <button className="book-now-btn">Book Now</button>
-            <Link to={`/details/${moive._id}`} className="details-btn">Details</Link>
+             <button className="addtocard-details" onClick={()=> addtoCart(moive)}>Add to Cart</button>
           </div>
        </div>
-            </div>
-
-
-         
+      </div>
      </>
     )
 }

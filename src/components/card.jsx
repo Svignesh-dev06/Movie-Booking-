@@ -4,18 +4,32 @@ import { Link } from "react-router-dom";
 
 function Card() {
   const [moives, setmoives] = useState([]);
-
+  const [loading , setLoading] = useState(true)
   useEffect(() => {
     axios
       .get("https://backend-crud-one.vercel.app/product")
       .then((response) => {
         setmoives(response.data);
-      });
+      })
+      .catch((error) =>{
+        console.log("Error Fetching Movie" , error)
+      })
+      .finally(() =>{
+        setLoading(false)
+      })
   }, []);
 
+  if(loading){
+    return(
+      <div id="movies" className="container-loading" role="status" aria-busy="true">
+        <span className="hero-loader" aria-hidden="true" />
+      
+      </div>
+    )
+  }
   return (
     <>
-      <div className="cards">
+      <div id="movies" className="cards">
         {moives.map((moive) => (
           <div className="card" key={moive._id || moive.id}>
             <img src={moive.image} alt={moive.title} />
@@ -25,7 +39,7 @@ function Card() {
             <p>{moive.releasedate}</p>
             <p>₹{moive.ticketprice}</p>
 
-            <button>Book Now</button>
+            <button>Add to Cart</button>
             <Link to={`/details/${moive._id}`} className="details-btn">Details</Link>
           </div>
         ))}

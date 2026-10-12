@@ -2,7 +2,7 @@ import { useState } from "react";
 import login from "../assets/login-background.jpeg";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Login() {
   const [user, setUser] = useState();
   const [email, setemail] = useState("");
