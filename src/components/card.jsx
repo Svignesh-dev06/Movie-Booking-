@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { cartContext } from "../Context/Cardcontext";
+import { useContext } from "react";
 function Card() {
+  const {addtoCart} = useContext(cartContext)
   const [moives, setmoives] = useState([]);
   const [loading , setLoading] = useState(true)
   useEffect(() => {
@@ -39,7 +41,7 @@ function Card() {
             <p>{moive.releasedate}</p>
             <p>₹{moive.ticketprice}</p>
 
-            <button>Add to Cart</button>
+            <button onClick={() => addtoCart(moive)}>Add to Cart</button>
             <Link to={`/details/${moive._id}`} className="details-btn">Details</Link>
           </div>
         ))}
