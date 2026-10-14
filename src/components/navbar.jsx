@@ -9,17 +9,7 @@ function Navbar() {
     const { cart } = useContext(cartContext)
  
     return(
-        <div
-            className="navbar"
-            style={{
-                position: 'sticky',
-                top: 0,
-                left: 0,
-                width: '100%',
-                zIndex: 1000,
-                boxSizing: 'border-box'
-            }}
-        >
+        <div className="navbar">
             <div className="nav-1">
             <img src={navimg} alt="" />
             <span>Ticket New</span>
