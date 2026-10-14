@@ -35,10 +35,7 @@ function addtocard() {
    </div>
   ))
 )}
-   
-  </>
-     
-    
+</>
   )
 }
 

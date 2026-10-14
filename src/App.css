@@ -665,3 +665,7 @@ font-size: 35px;
     animation: none;
   }
 }
+.card-heading{
+  margin: 50px;
+  font-weight: bolder;
+}

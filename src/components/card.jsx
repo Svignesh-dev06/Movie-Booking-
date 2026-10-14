@@ -31,6 +31,7 @@ function Card() {
   }
   return (
     <>
+    <h1 className="card-heading">Amazing Movies.</h1>
       <div id="movies" className="cards">
         {moives.map((moive) => (
           <div className="card" key={moive._id || moive.id}>
