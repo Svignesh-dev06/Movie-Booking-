@@ -16,6 +16,7 @@ function Login() {
     setUser(decoded);
     console.log("User Info:", decoded);
     localStorage.setItem("isLoggedIn" , "true");
+    localStorage.setItem("authMode", "user");
 
       navigate("/home");
   };
@@ -31,12 +32,19 @@ function Login() {
     }
       else if (email == "subramaniankv68@gmail.com" && password == 80729915) {
         localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("authMode", "user");
         navigate("/home");
     }
 
     else{
         seterror("Invaild Email or Password");
     }
+  }
+
+  function continueAsGuest() {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.setItem("authMode", "guest");
+    navigate("/home");
   }
 
   return (
@@ -91,6 +99,12 @@ function Login() {
                 <button onClick={handleLogout}>Log Out</button>
               </div>
             )}
+          </div>
+          <div className="guest-entry">
+            <span>Just looking around?</span>
+            <button type="button" className="guest-btn" onClick={continueAsGuest}>
+              Continue as Guest
+            </button>
           </div>
         </div>
       </div>
